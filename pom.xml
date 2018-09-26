@@ -154,7 +154,7 @@
 	  --world-parameters
 	</argument>
 	  <argument>
-	  {"proxyEndpoint":"${org}-${apigee.env}.apigee.net${deployment.suffix}"}
+	  {"proxyEndpoint":"${org}-${apigee.env}.apigee.net/helloworld/v1${deployment.suffix}"}
 	</argument>
 	</arguments>
 	  <workingDirectory>${basedir}/tests</workingDirectory>
