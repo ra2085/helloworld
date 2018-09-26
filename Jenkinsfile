@@ -51,7 +51,7 @@ node(label) {
                     fileIncludePattern: "**/reports.json",
                     ignoreFailedTests: false,
                     jenkinsBasePath: '',
-                    jsonReportDirectory: "target",
+                    jsonReportDirectory: "tests",
                     missingFails: false,
                     parallelTesting: false,
                     pendingFails: false,

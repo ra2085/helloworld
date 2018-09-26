@@ -154,7 +154,7 @@
 	--format
 	</argument>
 	<argument>
-	 json:target/reports.json
+	 json:reports.json
 	</argument>
 	  <argument>
 	  --world-parameters
