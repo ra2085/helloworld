@@ -1,6 +1,6 @@
 def label = "apigee-cicd-${UUID.randomUUID().toString()}"
 podTemplate(label: label, containers: [
-    containerTemplate(name: 'rgonzalez01/apigee-cicd-base-image', image: 'rgonzalez01/apigee-cicd-base-image:latest', ttyEnabled: true, command: 'cat')
+    containerTemplate(name: 'apigee-cicd-base-image', image: 'rgonzalez01/apigee-cicd-base-image', ttyEnabled: true, command: 'cat')
   ]) {
 node(label) {
 	// Clean workspace before doing anything
