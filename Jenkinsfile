@@ -1,7 +1,18 @@
-def label = "mypod-${UUID.randomUUID().toString()}"
-podTemplate(label: label, containers: [
-    containerTemplate(name: 'rgonzalez01/apigee-cicd-base-image', image: 'rgonzalez01/apigee-cicd-base-image:latest', ttyEnabled: true, command: 'cat')
-  ]) {
+podTemplate(label: 'docker', yaml: """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    some-label: some-label-value
+spec:
+  containers:
+  - name: rgonzalez01/apigee-cicd-base-image
+    image: rgonzalez01/apigee-cicd-base-image:latest
+    command:
+    - cat
+    tty: true
+"""
+  ) {
 node {
 	// Clean workspace before doing anything
     deleteDir() 
