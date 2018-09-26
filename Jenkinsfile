@@ -1,3 +1,7 @@
+def label = "mypod-${UUID.randomUUID().toString()}"
+podTemplate(label: label, containers: [
+    containerTemplate(name: 'rgonzalez01/apigee-cicd-base-image', image: 'rgonzalez01/apigee-cicd-base-image:latest', ttyEnabled: true, command: 'cat')
+  ]) {
 node {
 	// Clean workspace before doing anything
     deleteDir() 
@@ -15,15 +19,15 @@ node {
         		switch("${env.BRANCH_NAME}") {
         	        case "master":
         		        EdgeProfile="test"
-        		        EdgeName=""
+        		        EdgeSuffix=""
         				break;
         			case "prod":
         			    EdgeProfile="prod"
-        			    EdgeName=""
+        			    EdgeSuffix=""
         				break;
 					default:
         			    EdgeProfile="test"
-        			    EdgeSuffix="${env.BRANCH_NAME}"
+        			    EdgeSuffix="/${env.BRANCH_NAME}"
         				break;
         	    }
     	    }
@@ -35,7 +39,7 @@ node {
                        usernameVariable: 'APIGEE_USERNAME']
                     ]
                 ) {
-					sh "mvn -P${EdgeProfile} install -Dusername=${APIGEE_USERNAME} -Dpassword=${APIGEE_PASSWORD} -Dorg=gonzalezruben-eval"
+					sh "mvn -P${EdgeProfile} install -Dusername=${APIGEE_USERNAME} -Dpassword=${APIGEE_PASSWORD} -Dorg=gonzalezruben-eval -Ddeployment.suffix=${EdgeSuffix}"
 				}
 		}
 	   
@@ -44,4 +48,5 @@ node {
         throw err
     }
 	
+}
 }
