@@ -39,7 +39,9 @@ node(label) {
                        usernameVariable: 'APIGEE_USERNAME']
                     ]
                 ) {
-					sh "mvn -P${EdgeProfile} install -Dusername=${APIGEE_USERNAME} -Dpassword=${APIGEE_PASSWORD} -Dorg=gonzalezruben-eval -Ddeployment.suffix=${EdgeSuffix}"
+					container('apigee-cicd-base-image') {
+						sh "mvn -P${EdgeProfile} install -Dusername=${APIGEE_USERNAME} -Dpassword=${APIGEE_PASSWORD} -Dorg=gonzalezruben-eval -Ddeployment.suffix=${EdgeSuffix}"
+					}
 				}
 		}
 	   
