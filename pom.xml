@@ -49,8 +49,8 @@
 					</includes>
 					<replacements>
 						<replacement><!--Replace if necessary for integration tests.-->
-							<token>/helloworld/v1</token>
-							<value>/helloworld/v1${deployment.suffix}</value>
+							<token>/hello/v1</token>
+							<value>/hello/v1${deployment.suffix}</value>
 						</replacement>
 					</replacements>
 				</configuration>
@@ -154,7 +154,7 @@
 	  --world-parameters
 	</argument>
 	  <argument>
-	  {"proxyEndpoint":"${org}-${apigee.env}.apigee.net/helloworld/v1${deployment.suffix}"}
+	  {"proxyEndpoint":"${org}-${apigee.env}.apigee.net/hello/v1${deployment.suffix}"}
 	</argument>
 	</arguments>
 	  <workingDirectory>${basedir}/tests</workingDirectory>

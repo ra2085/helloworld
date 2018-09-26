@@ -44,6 +44,21 @@ node(label) {
 					}
 				}
 		}
+		stage('Functional Test Report') {
+                step([
+                    $class: 'CucumberReportPublisher',
+                    fileExcludePattern: '',
+                    fileIncludePattern: "**/reports.json",
+                    ignoreFailedTests: false,
+                    jenkinsBasePath: '',
+                    jsonReportDirectory: "target",
+                    missingFails: false,
+                    parallelTesting: false,
+                    pendingFails: false,
+                    skippedFails: false,
+                    undefinedFails: false
+                    ])
+        }
 	   
     } catch (err) {
         currentBuild.result = 'FAILED'
