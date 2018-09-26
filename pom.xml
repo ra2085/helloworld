@@ -150,6 +150,12 @@
 	  <argument>
 	  ${basedir}/tests/features
 	</argument>
+	<argument>
+	--format
+	</argument>
+	<argument>
+	 json:target/reports.json
+	</argument>
 	  <argument>
 	  --world-parameters
 	</argument>
