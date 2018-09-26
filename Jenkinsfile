@@ -1,18 +1,3 @@
-podTemplate(label: 'docker', yaml: """
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    some-label: some-label-value
-spec:
-  containers:
-  - name: rgonzalez01/apigee-cicd-base-image
-    image: rgonzalez01/apigee-cicd-base-image:latest
-    command:
-    - cat
-    tty: true
-"""
-  ) {
 node {
 	// Clean workspace before doing anything
     deleteDir() 
@@ -50,7 +35,9 @@ node {
                        usernameVariable: 'APIGEE_USERNAME']
                     ]
                 ) {
+					docker.image('rgonzalez01/apigee-cicd-base-image:latest').inside {
 					sh "mvn -P${EdgeProfile} install -Dusername=${APIGEE_USERNAME} -Dpassword=${APIGEE_PASSWORD} -Dorg=gonzalezruben-eval -Ddeployment.suffix=${EdgeSuffix}"
+					}
 				}
 		}
 	   
@@ -59,5 +46,4 @@ node {
         throw err
     }
 	
-}
 }
