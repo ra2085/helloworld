@@ -11,12 +11,6 @@
       <Request/>
       <Response/>
     </Flow>
-	<Flow name="hello">
-      <Condition>(proxy.pathsuffix MatchesPath "/hi") and (request.verb = "GET")</Condition>
-      <Description/>
-      <Request/>
-      <Response/>
-    </Flow>
   </Flows>
   <PostFlow name="PostFlow">
     <Request/>
